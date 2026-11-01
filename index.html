@@ -1,0 +1,4157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>THE CHUMS — Gaming Cafe & Lounge</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --black:#070707;
+    --black2:#0d0d0f;
+    --card:#111113;
+    --card2:#17171a;
+    --white:#f5f5f2;
+    --muted:#99999f;
+    --line:#29292d;
+    --purple:#5b45ff;
+    --purple2:#7a68ff;
+    --orange:#ff5733;
+    --yellow:#ffd84d;
+    --green:#35d07f;
+    --red:#ff4d4d;
+    --radius:24px;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--black);
+    color:var(--white);
+    font-family:Inter,Arial,sans-serif;
+    overflow-x:hidden;
+}
+
+button,input,select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+::-webkit-scrollbar{
+    width:7px;
+}
+
+::-webkit-scrollbar-track{
+    background:#080808;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#3b3b40;
+    border-radius:20px;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    height:78px;
+    padding:0 5%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:rgba(7,7,7,.86);
+    backdrop-filter:blur(22px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    min-width:180px;
+}
+
+.logo-mark{
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    display:grid;
+    place-items:center;
+    background:linear-gradient(135deg,var(--purple),#24168d);
+    font-size:22px;
+    box-shadow:0 8px 30px rgba(91,69,255,.35);
+}
+
+.logo-text{
+    font-family:"Space Grotesk";
+    font-size:20px;
+    font-weight:900;
+    letter-spacing:-1px;
+}
+
+.logo-text small{
+    display:block;
+    color:var(--muted);
+    font-size:9px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-top:-2px;
+}
+
+.nav-links{
+    display:flex;
+    gap:5px;
+}
+
+.nav-links button{
+    border:0;
+    background:transparent;
+    color:#999;
+    padding:10px 14px;
+    border-radius:20px;
+    font-size:13px;
+    transition:.25s;
+}
+
+.nav-links button:hover,
+.nav-links button.active{
+    background:#fff;
+    color:#000;
+}
+
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.cart-button{
+    border:1px solid var(--line);
+    background:#111;
+    color:#fff;
+    border-radius:30px;
+    padding:10px 16px;
+    position:relative;
+}
+
+.cart-count{
+    position:absolute;
+    top:-7px;
+    right:-5px;
+    background:var(--orange);
+    color:white;
+    min-width:20px;
+    height:20px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    font-size:10px;
+    font-weight:800;
+}
+
+.mobile-menu{
+    display:none;
+    background:none;
+    border:0;
+    color:#fff;
+    font-size:25px;
+}
+
+/* =========================
+   PAGES
+========================= */
+
+.page{
+    display:none;
+    animation:pageIn .45s ease;
+}
+
+.page.active{
+    display:block;
+}
+
+@keyframes pageIn{
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.container{
+    width:min(1250px,90%);
+    margin:auto;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:720px;
+    display:flex;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 80% 25%,rgba(91,69,255,.3),transparent 30%),
+        radial-gradient(circle at 20% 80%,rgba(255,87,51,.12),transparent 25%),
+        #070707;
+}
+
+.hero:after{
+    content:"";
+    position:absolute;
+    width:650px;
+    height:650px;
+    right:-250px;
+    top:-200px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.08);
+    box-shadow:
+        0 0 0 80px rgba(255,255,255,.015),
+        0 0 0 160px rgba(255,255,255,.01);
+}
+
+.hero-content{
+    width:min(1250px,90%);
+    margin:auto;
+    position:relative;
+    z-index:2;
+}
+
+.hero-label{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 14px;
+    border:1px solid #292929;
+    background:#101010;
+    border-radius:30px;
+    color:#bbb;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+}
+
+.hero-label span{
+    width:7px;
+    height:7px;
+    background:var(--green);
+    border-radius:50%;
+    box-shadow:0 0 10px var(--green);
+}
+
+.hero h1{
+    margin-top:25px;
+    font-family:"Space Grotesk";
+    font-size:clamp(65px,10vw,145px);
+    line-height:.82;
+    letter-spacing:-8px;
+    max-width:950px;
+}
+
+.hero h1 .gradient{
+    background:linear-gradient(
+        100deg,
+        #fff 0%,
+        #fff 30%,
+        #806fff 65%,
+        #ff6744 100%
+    );
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero-sub{
+    max-width:580px;
+    color:#aaa;
+    font-size:17px;
+    line-height:1.7;
+    margin-top:30px;
+}
+
+.hero-actions{
+    display:flex;
+    gap:12px;
+    margin-top:35px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    border:0;
+    border-radius:40px;
+    padding:14px 23px;
+    font-weight:700;
+    transition:.25s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+.btn-primary{
+    background:#fff;
+    color:#000;
+}
+
+.btn-purple{
+    background:var(--purple);
+    color:white;
+}
+
+.btn-dark{
+    background:#151517;
+    color:#fff;
+    border:1px solid var(--line);
+}
+
+.btn-danger{
+    background:#301313;
+    color:#ff6d6d;
+}
+
+.hero-stats{
+    margin-top:60px;
+    display:flex;
+    gap:45px;
+    flex-wrap:wrap;
+}
+
+.hero-stat strong{
+    display:block;
+    font-size:25px;
+}
+
+.hero-stat span{
+    color:#777;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+}
+
+/* =========================
+   SECTION
+========================= */
+
+.section{
+    padding:100px 0;
+}
+
+.section-head{
+    margin-bottom:45px;
+}
+
+.eyebrow{
+    color:#7568ff;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:12px;
+}
+
+.section-head h2{
+    font-family:"Space Grotesk";
+    font-size:clamp(40px,6vw,72px);
+    letter-spacing:-4px;
+    line-height:.95;
+}
+
+.section-head p{
+    color:#888;
+    margin-top:15px;
+    max-width:600px;
+    line-height:1.7;
+}
+
+/* =========================
+   FEATURE CARDS
+========================= */
+
+.feature-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.feature{
+    min-height:270px;
+    padding:28px;
+    border:1px solid var(--line);
+    background:linear-gradient(145deg,#121214,#0b0b0d);
+    border-radius:var(--radius);
+    position:relative;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.feature:hover{
+    transform:translateY(-6px);
+    border-color:#4b4b55;
+}
+
+.feature-number{
+    color:#555;
+    font-size:12px;
+}
+
+.feature-icon{
+    font-size:45px;
+    margin-top:35px;
+}
+
+.feature h3{
+    margin-top:20px;
+    font-size:22px;
+}
+
+.feature p{
+    margin-top:8px;
+    color:#777;
+    line-height:1.6;
+    font-size:14px;
+}
+
+/* =========================
+   MENU
+========================= */
+
+.menu-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    margin-bottom:25px;
+    flex-wrap:wrap;
+}
+
+.search{
+    background:#111;
+    border:1px solid var(--line);
+    color:white;
+    border-radius:40px;
+    padding:14px 20px;
+    min-width:280px;
+    outline:none;
+}
+
+.search:focus{
+    border-color:var(--purple);
+}
+
+.categories{
+    display:flex;
+    gap:8px;
+    overflow:auto;
+    padding-bottom:8px;
+    margin-bottom:35px;
+}
+
+.categories button{
+    flex-shrink:0;
+    border:1px solid var(--line);
+    background:#101012;
+    color:#999;
+    border-radius:30px;
+    padding:10px 17px;
+    font-size:12px;
+}
+
+.categories button.active{
+    background:#fff;
+    color:#000;
+    border-color:#fff;
+}
+
+.menu-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:17px;
+}
+
+.menu-card{
+    background:#101012;
+    border:1px solid #202024;
+    border-radius:22px;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.menu-card:hover{
+    transform:translateY(-6px);
+    border-color:#4b4b52;
+}
+
+.food-image{
+    height:215px;
+    position:relative;
+    overflow:hidden;
+    display:grid;
+    place-items:center;
+    background:
+        radial-gradient(circle at 30% 30%,rgba(255,255,255,.15),transparent 30%),
+        linear-gradient(135deg,#3b2b77,#101010);
+}
+
+.food-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.menu-card:hover .food-image img{
+    transform:scale(1.06);
+}
+
+.food-emoji{
+    font-size:85px;
+    filter:drop-shadow(0 20px 20px rgba(0,0,0,.5));
+}
+
+.food-tag{
+    position:absolute;
+    top:12px;
+    left:12px;
+    background:#000;
+    color:#fff;
+    padding:6px 10px;
+    border-radius:20px;
+    font-size:9px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+.menu-info{
+    padding:20px;
+}
+
+.menu-info h3{
+    font-size:17px;
+}
+
+.menu-desc{
+    color:#777;
+    font-size:12px;
+    line-height:1.5;
+    margin-top:7px;
+    min-height:37px;
+}
+
+.menu-bottom{
+    margin-top:18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.price{
+    font-size:18px;
+    font-weight:800;
+}
+
+.add-btn{
+    border:0;
+    background:#fff;
+    color:#000;
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    font-size:20px;
+    font-weight:700;
+}
+
+.add-btn:hover{
+    background:var(--purple);
+    color:#fff;
+}
+
+/* =========================
+   GAMING
+========================= */
+
+.station-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.station{
+    background:#111113;
+    border:1px solid var(--line);
+    border-radius:25px;
+    padding:25px;
+    position:relative;
+    overflow:hidden;
+}
+
+.station.active{
+    border-color:var(--purple);
+    box-shadow:0 0 40px rgba(91,69,255,.12);
+}
+
+.station-top{
+    display:flex;
+    justify-content:space-between;
+}
+
+.station-id{
+    color:#666;
+    font-size:11px;
+}
+
+.status{
+    font-size:10px;
+    padding:6px 10px;
+    border-radius:20px;
+    text-transform:uppercase;
+    font-weight:800;
+}
+
+.status.available{
+    color:#43e58d;
+    background:#10271c;
+}
+
+.status.busy{
+    color:#ffcb56;
+    background:#29200b;
+}
+
+.station-icon{
+    font-size:55px;
+    margin:35px 0 20px;
+}
+
+.station h3{
+    font-size:21px;
+}
+
+.station-meta{
+    color:#777;
+    font-size:13px;
+    margin-top:7px;
+}
+
+.station-footer{
+    margin-top:25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.station-price{
+    font-weight:800;
+}
+
+/* =========================
+   BOOKING
+========================= */
+
+.booking-layout{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.panel{
+    background:#101012;
+    border:1px solid var(--line);
+    border-radius:25px;
+    padding:30px;
+}
+
+.form-group{
+    margin-bottom:20px;
+}
+
+.form-group label{
+    display:block;
+    color:#888;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-bottom:8px;
+}
+
+.input{
+    width:100%;
+    padding:14px 16px;
+    background:#09090a;
+    border:1px solid #28282c;
+    color:white;
+    border-radius:12px;
+    outline:none;
+}
+
+.input:focus{
+    border-color:var(--purple);
+}
+
+.slot-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+}
+
+.slot{
+    padding:10px 4px;
+    border-radius:10px;
+    background:#151517;
+    border:1px solid var(--line);
+    color:#aaa;
+    text-align:center;
+    font-size:11px;
+    cursor:pointer;
+}
+
+.slot.selected{
+    background:#fff;
+    color:#000;
+}
+
+.booking-total{
+    margin:20px 0;
+    padding:20px;
+    border-radius:15px;
+    background:linear-gradient(135deg,#181522,#111);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.booking-total strong{
+    font-size:27px;
+}
+
+/* =========================
+   BILLING
+========================= */
+
+.billing-layout{
+    display:grid;
+    grid-template-columns:360px 1fr;
+    gap:25px;
+}
+
+.cart-panel{
+    background:#101012;
+    border:1px solid var(--line);
+    border-radius:25px;
+    padding:25px;
+    height:max-content;
+    position:sticky;
+    top:100px;
+}
+
+.cart-title{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:20px;
+}
+
+.cart-items{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    max-height:400px;
+    overflow:auto;
+}
+
+.cart-item{
+    background:#18181b;
+    padding:12px;
+    border-radius:13px;
+}
+
+.cart-item-top{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.cart-item-name{
+    font-size:13px;
+    font-weight:700;
+}
+
+.cart-item-price{
+    color:#fff;
+    font-size:13px;
+}
+
+.qty{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-top:8px;
+}
+
+.qty button{
+    width:25px;
+    height:25px;
+    border:1px solid #333;
+    background:#0b0b0b;
+    color:#fff;
+    border-radius:7px;
+}
+
+.qty span{
+    font-size:12px;
+}
+
+.bill{
+    background:#fff;
+    color:#111;
+    border-radius:20px;
+    padding:35px;
+    max-width:600px;
+    margin:auto;
+    box-shadow:0 30px 80px rgba(0,0,0,.3);
+}
+
+.bill-header{
+    text-align:center;
+    border-bottom:1px dashed #aaa;
+    padding-bottom:20px;
+}
+
+.bill-header h2{
+    font-size:25px;
+    font-weight:900;
+}
+
+.bill-header p{
+    font-size:11px;
+    color:#666;
+    margin-top:5px;
+}
+
+.bill-meta{
+    padding:15px 0;
+    border-bottom:1px dashed #aaa;
+    font-size:12px;
+}
+
+.bill-meta div{
+    display:flex;
+    justify-content:space-between;
+    margin:7px 0;
+}
+
+.bill-items{
+    padding:15px 0;
+    border-bottom:1px dashed #aaa;
+}
+
+.bill-row{
+    display:flex;
+    justify-content:space-between;
+    margin:9px 0;
+    font-size:13px;
+}
+
+.bill-summary{
+    padding-top:15px;
+}
+
+.bill-summary div{
+    display:flex;
+    justify-content:space-between;
+    margin:8px 0;
+    font-size:13px;
+}
+
+.bill-total{
+    border-top:2px solid #111;
+    padding-top:12px;
+    margin-top:12px;
+    font-size:20px!important;
+    font-weight:900;
+}
+
+.payment-options{
+    display:flex;
+    gap:8px;
+    margin-top:15px;
+}
+
+.payment{
+    flex:1;
+    padding:10px;
+    border:1px solid #ddd;
+    background:#fff;
+    border-radius:9px;
+    font-size:11px;
+}
+
+.payment.selected{
+    background:#111;
+    color:#fff;
+}
+
+.bill-actions{
+    display:flex;
+    gap:10px;
+    margin-top:25px;
+}
+
+.bill-actions button{
+    flex:1;
+}
+
+/* =========================
+   RESERVATIONS
+========================= */
+
+.reservation-list{
+    margin-top:30px;
+}
+
+.reservation{
+    background:#111113;
+    border:1px solid var(--line);
+    border-radius:17px;
+    padding:18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:10px;
+}
+
+.reservation-info strong{
+    display:block;
+}
+
+.reservation-info span{
+    display:block;
+    color:#777;
+    font-size:12px;
+    margin-top:5px;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(15px);
+    z-index:2000;
+    display:none;
+    place-items:center;
+    padding:20px;
+}
+
+.overlay.show{
+    display:grid;
+}
+
+.modal{
+    width:min(500px,100%);
+    background:#151517;
+    border:1px solid #333;
+    border-radius:25px;
+    padding:30px;
+    position:relative;
+}
+
+.modal-close{
+    position:absolute;
+    right:20px;
+    top:15px;
+    background:none;
+    border:0;
+    color:#aaa;
+    font-size:25px;
+}
+
+.modal h2{
+    font-size:30px;
+    font-family:"Space Grotesk";
+    margin-bottom:20px;
+}
+
+/* =========================
+   TOAST
+========================= */
+
+.toast-container{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    z-index:3000;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.toast{
+    background:#fff;
+    color:#000;
+    padding:14px 18px;
+    border-radius:12px;
+    font-size:13px;
+    font-weight:700;
+    box-shadow:0 15px 40px rgba(0,0,0,.4);
+    animation:toastIn .3s ease;
+}
+
+@keyframes toastIn{
+    from{
+        transform:translateX(30px);
+        opacity:0;
+    }
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    padding:50px 5%;
+    border-top:1px solid var(--line);
+    color:#666;
+    display:flex;
+    justify-content:space-between;
+    font-size:12px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:1000px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .mobile-menu{
+        display:block;
+    }
+
+    .menu-grid,
+    .station-grid,
+    .feature-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .billing-layout{
+        grid-template-columns:1fr;
+    }
+
+    .cart-panel{
+        position:static;
+    }
+}
+
+@media(max-width:700px){
+
+    .navbar{
+        padding:0 20px;
+    }
+
+    .logo{
+        min-width:auto;
+    }
+
+    .nav-right{
+        display:none;
+    }
+
+    .hero{
+        min-height:650px;
+    }
+
+    .hero h1{
+        font-size:65px;
+        letter-spacing:-5px;
+    }
+
+    .hero-sub{
+        font-size:14px;
+    }
+
+    .section{
+        padding:65px 0;
+    }
+
+    .menu-grid,
+    .station-grid,
+    .feature-grid,
+    .booking-layout{
+        grid-template-columns:1fr;
+    }
+
+    .search{
+        min-width:100%;
+    }
+
+    .slot-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .footer{
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .reservation{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:15px;
+    }
+}
+
+/* =========================
+   PRINT RECEIPT ONLY
+========================= */
+
+@media print{
+
+    body *{
+        visibility:hidden!important;
+    }
+
+    #printBill,
+    #printBill *{
+        visibility:visible!important;
+    }
+
+    #printBill{
+        position:absolute;
+        left:0;
+        top:0;
+        width:100%;
+        max-width:none;
+        margin:0;
+        padding:15mm;
+        box-shadow:none;
+        border-radius:0;
+        background:#fff;
+        color:#000;
+    }
+
+    .no-print{
+        display:none!important;
+    }
+
+    @page{
+        margin:10mm;
+        size:A4;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- CUSTOMER AUTH SCREEN (added without changing style.css) -->
+<div id="authGate" style="position:fixed;inset:0;z-index:99999;background:#070707;display:grid;place-items:center;padding:20px;font-family:Inter,Arial,sans-serif;color:#f5f5f2">
+  <div style="width:min(430px,100%);background:#111113;border:1px solid #29292d;border-radius:24px;padding:28px">
+    <div style="font-size:12px;letter-spacing:2px;color:#999;margin-bottom:8px">THE CHUMS · CUSTOMER ACCOUNT</div>
+    <h2 id="authHeading" style="font-size:28px;margin:0 0 8px">Login</h2>
+    <p id="authHint" style="color:#999;font-size:14px;margin:0 0 22px">Login to continue to the cafe.</p>
+    <form id="authForm">
+      <div id="authNameWrap" style="display:none;margin-bottom:12px"><input id="authName" autocomplete="name" placeholder="Your name" style="width:100%;box-sizing:border-box;padding:13px;border-radius:10px;border:1px solid #333;background:#09090a;color:white"></div>
+      <div style="margin-bottom:12px"><input id="authEmail" type="email" autocomplete="email" required placeholder="Email address" style="width:100%;box-sizing:border-box;padding:13px;border-radius:10px;border:1px solid #333;background:#09090a;color:white"></div>
+      <div style="margin-bottom:14px"><input id="authPassword" type="password" autocomplete="current-password" minlength="8" required placeholder="Password (at least 8 characters)" style="width:100%;box-sizing:border-box;padding:13px;border-radius:10px;border:1px solid #333;background:#09090a;color:white"></div>
+      <button id="authSubmit" type="submit" style="width:100%;padding:13px;border:0;border-radius:30px;background:white;color:black;font-weight:800;cursor:pointer">Login</button>
+    </form>
+    <p id="authMessage" role="status" style="min-height:18px;color:#ff8b78;font-size:13px;margin:12px 0"></p>
+    <button id="authSwitch" type="button" style="border:0;background:transparent;color:#b7adff;cursor:pointer;padding:0">Create an account</button>
+  </div>
+</div>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+        <div class="logo-mark">🎮</div>
+
+        <div class="logo-text">
+            THE CHUMS
+            <small>Gaming Cafe & Lounge</small>
+        </div>
+    </div>
+
+    <nav class="nav-links">
+
+        <button class="active" onclick="showPage('home',this)">
+            Home
+        </button>
+
+        <button onclick="showPage('menu',this)">
+            Menu
+        </button>
+
+        <button onclick="showPage('gaming',this)">
+            Gaming
+        </button>
+
+        <button onclick="showPage('reserve',this)">
+            Reserve
+        </button>
+
+        <button onclick="showPage('billing',this)">
+            Billing
+        </button>
+
+    </nav>
+
+    <div class="nav-right">
+
+        <button class="cart-button" onclick="showPage('billing')">
+            🛒 Cart
+            <span class="cart-count" id="cartCount">0</span>
+        </button>
+
+    </div>
+
+    <button class="mobile-menu" onclick="toggleMobileMenu()">☰</button>
+
+</header>
+
+
+<!-- =========================
+     HOME
+========================= -->
+
+<main>
+
+<section id="page-home" class="page active">
+
+    <div class="hero">
+
+        <div class="hero-content">
+
+            <div class="hero-label">
+                <span></span>
+                NOW OPEN · MAROL
+            </div>
+
+            <h1>
+                EAT.<br>
+                <span class="gradient">PLAY.</span><br>
+                REPEAT.
+            </h1>
+
+            <p class="hero-sub">
+                A premium gaming cafe where PS5 gaming,
+                competitive play, comfort food and good
+                vibes come together.
+            </p>
+
+            <div class="hero-actions">
+
+                <button class="btn btn-primary"
+                        onclick="showPage('menu')">
+                    Explore Menu →
+                </button>
+
+                <button class="btn btn-dark"
+                        onclick="showPage('gaming')">
+                    Start Gaming 🎮
+                </button>
+
+            </div>
+
+            <div class="hero-stats">
+
+                <div class="hero-stat">
+                    <strong id="homeActive">0</strong>
+                    <span>Active Sessions</span>
+                </div>
+
+                <div class="hero-stat">
+                    <strong>₹100+</strong>
+                    <span>Gaming / Hour</span>
+                </div>
+
+                <div class="hero-stat">
+                    <strong>4K</strong>
+                    <span>Gaming Displays</span>
+                </div>
+
+                <div class="hero-stat">
+                    <strong>11 PM</strong>
+                    <span>Closing Time</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <section class="section">
+
+        <div class="container">
+
+            <div class="section-head">
+
+                <div class="eyebrow">
+                    THE CHUMS EXPERIENCE
+                </div>
+
+                <h2>
+                    More than<br>
+                    just gaming.
+                </h2>
+
+                <p>
+                    Play hard. Eat better. Chill with your people.
+                    Everything you need for a proper gaming session.
+                </p>
+
+            </div>
+
+            <div class="feature-grid">
+
+                <div class="feature">
+
+                    <div class="feature-number">01</div>
+
+                    <div class="feature-icon">
+                        🎮
+                    </div>
+
+                    <h3>PS5 Gaming</h3>
+
+                    <p>
+                        Premium gaming stations with high refresh
+                        displays and comfortable seating.
+                    </p>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-number">02</div>
+
+                    <div class="feature-icon">
+                        🍔
+                    </div>
+
+                    <h3>Chums Kitchen</h3>
+
+                    <p>
+                        Burgers, momos, pizza, pasta, fries,
+                        mocktails, shakes and much more.
+                    </p>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-number">03</div>
+
+                    <div class="feature-icon">
+                        🏆
+                    </div>
+
+                    <h3>Competitive Vibes</h3>
+
+                    <p>
+                        Bring your squad, pick your game and
+                        settle the score.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</section>
+
+
+<!-- =========================
+     MENU
+========================= -->
+
+<section id="page-menu" class="page">
+
+    <div class="section">
+
+        <div class="container">
+
+            <div class="section-head">
+
+                <div class="eyebrow">
+                    CHUMS KITCHEN
+                </div>
+
+                <h2>
+                    Hungry?
+                </h2>
+
+                <p>
+                    Pick your food. Add it to the cart.
+                    We'll add everything to the final bill.
+                </p>
+
+            </div>
+
+
+            <div class="menu-top">
+
+                <input
+                    class="search"
+                    id="menuSearch"
+                    placeholder="Search burgers, momos, pizza..."
+                    oninput="renderMenu()"
+                >
+
+                <button class="btn btn-purple"
+                        onclick="showPage('billing')">
+                    View Cart →
+                </button>
+
+            </div>
+
+
+            <div class="categories" id="categories">
+
+                <button class="active"
+                        data-cat="all"
+                        onclick="setCategory('all',this)">
+                    ALL
+                </button>
+
+                <button data-cat="specials"
+                        onclick="setCategory('specials',this)">
+                    SPECIALS
+                </button>
+
+                <button data-cat="appetizers"
+                        onclick="setCategory('appetizers',this)">
+                    APPETIZERS
+                </button>
+
+                <button data-cat="momos"
+                        onclick="setCategory('momos',this)">
+                    MOMOS
+                </button>
+
+                <button data-cat="burgers"
+                        onclick="setCategory('burgers',this)">
+                    BURGERS
+                </button>
+
+                <button data-cat="subs"
+                        onclick="setCategory('subs',this)">
+                    SUBS
+                </button>
+
+                <button data-cat="wraps"
+                        onclick="setCategory('wraps',this)">
+                    WRAPS
+                </button>
+
+                <button data-cat="pizza"
+                        onclick="setCategory('pizza',this)">
+                    PIZZA
+                </button>
+
+                <button data-cat="pasta"
+                        onclick="setCategory('pasta',this)">
+                    PASTA
+                </button>
+
+                <button data-cat="maggi"
+                        onclick="setCategory('maggi',this)">
+                    MAGGI
+                </button>
+
+                <button data-cat="fries"
+                        onclick="setCategory('fries',this)">
+                    FRIES
+                </button>
+
+                <button data-cat="desserts"
+                        onclick="setCategory('desserts',this)">
+                    DESSERTS
+                </button>
+
+                <button data-cat="drinks"
+                        onclick="setCategory('drinks',this)">
+                    DRINKS
+                </button>
+
+            </div>
+
+
+            <div class="menu-grid" id="menuGrid"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     GAMING
+========================= -->
+
+<section id="page-gaming" class="page">
+
+    <div class="section">
+
+        <div class="container">
+
+            <div class="section-head">
+
+                <div class="eyebrow">
+                    GAMING FLOOR
+                </div>
+
+                <h2>
+                    Pick your<br>
+                    station.
+                </h2>
+
+                <p>
+                    Start a session and the system will automatically
+                    calculate gaming charges.
+                </p>
+
+            </div>
+
+            <div class="station-grid" id="stationGrid"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     RESERVATION
+========================= -->
+
+<section id="page-reserve" class="page">
+
+    <div class="section">
+
+        <div class="container">
+
+            <div class="section-head">
+
+                <div class="eyebrow">
+                    RESERVE
+                </div>
+
+                <h2>
+                    Book your<br>
+                    session.
+                </h2>
+
+            </div>
+
+
+            <div class="booking-layout">
+
+                <div class="panel">
+
+                    <div class="form-group">
+
+                        <label>Customer Name</label>
+
+                        <input
+                            class="input"
+                            id="customerName"
+                            placeholder="Enter customer name"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Phone</label>
+
+                        <input
+                            class="input"
+                            id="customerPhone"
+                            maxlength="10"
+                            placeholder="10 digit mobile number"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Station</label>
+
+                        <select
+                            class="input"
+                            id="reserveStation"
+                            onchange="calculateReservation()">
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Date</label>
+
+                        <input
+                            class="input"
+                            id="reserveDate"
+                            type="date"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Duration</label>
+
+                        <select
+                            class="input"
+                            id="reserveHours"
+                            onchange="calculateReservation()">
+
+                            <option value="1">1 Hour</option>
+                            <option value="2">2 Hours</option>
+                            <option value="3">3 Hours</option>
+                            <option value="4">4 Hours</option>
+                            <option value="5">5 Hours</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Time Slot</label>
+
+                        <div class="slot-grid" id="slotGrid"></div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <h3 style="font-size:24px">
+                        Booking Summary
+                    </h3>
+
+                    <p style="color:#777;margin-top:8px">
+                        Your reservation details
+                    </p>
+
+
+                    <div class="booking-total">
+
+                        <span>Total</span>
+
+                        <strong id="reservationTotal">
+                            ₹100
+                        </strong>
+
+                    </div>
+
+
+                    <button
+                        class="btn btn-primary"
+                        style="width:100%"
+                        onclick="makeReservation()">
+
+                        Confirm Reservation →
+
+                    </button>
+
+
+                    <div class="reservation-list"
+                         id="reservationList">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     BILLING
+========================= -->
+
+<section id="page-billing" class="page">
+
+    <div class="section">
+
+        <div class="container">
+
+            <div class="section-head">
+
+                <div class="eyebrow">
+                    CHECKOUT
+                </div>
+
+                <h2>
+                    Your bill.
+                </h2>
+
+                <p>
+                    Gaming + food + GST, calculated automatically.
+                </p>
+
+            </div>
+
+
+            <div class="billing-layout">
+
+                <aside class="cart-panel">
+
+                    <div class="cart-title">
+
+                        <h3>
+                            Current Order
+                        </h3>
+
+                        <span id="cartItemsCount">
+                            0 items
+                        </span>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Gaming Session</label>
+
+                        <select
+                            class="input"
+                            id="billingStation"
+                            onchange="updateBill()">
+                        </select>
+
+                    </div>
+
+
+                    <div
+                        class="cart-items"
+                        id="cartItems">
+                    </div>
+
+
+                    <div style="
+                        border-top:1px solid #29292d;
+                        margin-top:20px;
+                        padding-top:20px;
+                    ">
+
+                        <div style="
+                            display:flex;
+                            justify-content:space-between;
+                            margin-bottom:10px;
+                            color:#888;
+                        ">
+                            <span>Food</span>
+                            <strong id="cartFoodTotal">
+                                ₹0
+                            </strong>
+                        </div>
+
+                        <div style="
+                            display:flex;
+                            justify-content:space-between;
+                            color:#888;
+                        ">
+                            <span>Gaming</span>
+                            <strong id="cartGameTotal">
+                                ₹0
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </aside>
+
+
+                <!-- RECEIPT -->
+
+                <div>
+
+                    <div
+                        class="bill"
+                        id="printBill">
+
+                        <div class="bill-header">
+
+                            <h2>THE CHUMS</h2>
+
+                            <p>
+                                GAMING CAFE & LOUNGE
+                            </p>
+
+                            <p>
+                                Marol, Mumbai · 091675 19763
+                            </p>
+
+                        </div>
+
+
+                        <div class="bill-meta">
+
+                            <div>
+                                <span>Bill No.</span>
+                                <strong id="billNumber">
+                                    CH-0001
+                                </strong>
+                            </div>
+
+                            <div>
+                                <span>Date</span>
+                                <strong id="billDate">
+                                    --
+                                </strong>
+                            </div>
+
+                            <div>
+                                <span>Customer</span>
+                                <strong id="billCustomer">
+                                    Walk-in
+                                </strong>
+                            </div>
+
+                            <div>
+                                <span>Station</span>
+                                <strong id="billStation">
+                                    --
+                                </strong>
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="bill-items"
+                            id="billItems">
+                        </div>
+
+
+                        <div class="bill-summary">
+
+                            <div>
+                                <span>Gaming Charges</span>
+                                <strong id="billGaming">
+                                    ₹0
+                                </strong>
+                            </div>
+
+                            <div>
+                                <span>Food Subtotal</span>
+                                <strong id="billFood">
+                                    ₹0
+                                </strong>
+                            </div>
+
+                            <div>
+                                <span>Subtotal</span>
+                                <strong id="billSubtotal">
+                                    ₹0
+                                </strong>
+                            </div>
+
+                            <div>
+                                <span>GST 5%</span>
+                                <strong id="billGST">
+                                    ₹0
+                                </strong>
+                            </div>
+
+                            <div class="bill-total">
+                                <span>TOTAL</span>
+                                <strong id="billTotal">
+                                    ₹0
+                                </strong>
+                            </div>
+
+                        </div>
+
+
+                        <div class="payment-options no-print">
+
+                            <button
+                                class="payment selected"
+                                onclick="selectPayment('Cash',this)">
+                                💵 Cash
+                            </button>
+
+                            <button
+                                class="payment"
+                                onclick="selectPayment('UPI',this)">
+                                📱 UPI
+                            </button>
+
+                            <button
+                                class="payment"
+                                onclick="selectPayment('Card',this)">
+                                💳 Card
+                            </button>
+
+                        </div>
+
+
+                        <p style="
+                            text-align:center;
+                            font-size:11px;
+                            color:#777;
+                            margin-top:25px;
+                        ">
+                            EAT. PLAY. REPEAT.
+                        </p>
+
+                    </div>
+
+
+                    <div class="bill-actions no-print">
+
+                        <button
+                            class="btn btn-primary"
+                            onclick="printReceipt()">
+                            🖨 Print Bill
+                        </button>
+
+                        <button
+                            class="btn btn-purple"
+                            onclick="checkout()">
+                            ✓ Checkout
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<footer class="footer">
+
+    <span>
+        © 2026 THE CHUMS
+    </span>
+
+    <span>
+        EAT. PLAY. REPEAT.
+    </span>
+
+</footer>
+
+
+<!-- =========================
+     MODAL
+========================= -->
+
+<div class="overlay" id="modal">
+
+    <div class="modal">
+
+        <button
+            class="modal-close"
+            onclick="closeModal()">
+            ×
+        </button>
+
+        <h2 id="modalTitle">
+            Start Session
+        </h2>
+
+        <div id="modalBody"></div>
+
+    </div>
+
+</div>
+
+
+<div class="toast-container" id="toastContainer"></div>
+
+
+<script>
+
+/* =====================================================
+   MENU DATA
+===================================================== */
+
+const menu = [
+
+/* SPECIALS */
+
+{
+ id:"sp1",
+ name:"Jhol Momos",
+ category:"specials",
+ price:170,
+ emoji:"🥟",
+ desc:"The Chums signature jhol momos"
+},
+
+{
+ id:"sp2",
+ name:"Chinese Bhel",
+ category:"specials",
+ price:100,
+ emoji:"🍜",
+ desc:"Crispy noodles with spicy sauces"
+},
+
+{
+ id:"sp3",
+ name:"Korean BBQ Wings",
+ category:"specials",
+ price:250,
+ emoji:"🍗",
+ desc:"Smoky Korean-style chicken wings"
+},
+
+{
+ id:"sp4",
+ name:"Seoul Pop Bites",
+ category:"specials",
+ price:250,
+ emoji:"🍗",
+ desc:"Crispy Korean chicken bites"
+},
+
+{
+ id:"sp5",
+ name:"Chilli Toast",
+ category:"specials",
+ price:160,
+ emoji:"🍞",
+ desc:"Cheesy chilli toast"
+},
+
+{
+ id:"sp6",
+ name:"Chicken Minidogs",
+ category:"specials",
+ price:200,
+ emoji:"🌭",
+ desc:"Mini chicken hotdogs"
+},
+
+/* APPETIZERS */
+
+{
+ id:"a1",
+ name:"Loaded Nachos",
+ category:"appetizers",
+ price:230,
+ emoji:"🧀",
+ desc:"Nachos loaded with cheese and salsa"
+},
+
+{
+ id:"a2",
+ name:"Spring Rolls",
+ category:"appetizers",
+ price:200,
+ emoji:"🥠",
+ desc:"Crispy vegetable spring rolls"
+},
+
+{
+ id:"a3",
+ name:"Cheese Balls",
+ category:"appetizers",
+ price:180,
+ emoji:"🧀",
+ desc:"Golden cheesy bites"
+},
+
+{
+ id:"a4",
+ name:"Chicken Nuggets",
+ category:"appetizers",
+ price:200,
+ emoji:"🍗",
+ desc:"Crispy chicken nuggets"
+},
+
+{
+ id:"a5",
+ name:"Fish Fingers",
+ category:"appetizers",
+ price:250,
+ emoji:"🐟",
+ desc:"Crispy fish fingers with dip"
+},
+
+{
+ id:"a6",
+ name:"Munchies Platter",
+ category:"appetizers",
+ price:349,
+ emoji:"🍱",
+ desc:"Fries, nachos, wedges and cheese balls"
+},
+
+/* MOMOS */
+
+{
+ id:"m1",
+ name:"Steamed Veg Momos",
+ category:"momos",
+ price:140,
+ emoji:"🥟",
+ desc:"Classic steamed vegetable momos"
+},
+
+{
+ id:"m2",
+ name:"Steamed Chicken Momos",
+ category:"momos",
+ price:150,
+ emoji:"🥟",
+ desc:"Juicy chicken momos"
+},
+
+{
+ id:"m3",
+ name:"Fried Momos",
+ category:"momos",
+ price:150,
+ emoji:"🥟",
+ desc:"Golden fried momos"
+},
+
+{
+ id:"m4",
+ name:"Peri Peri Momos",
+ category:"momos",
+ price:170,
+ emoji:"🥟",
+ desc:"Spicy peri peri momos"
+},
+
+{
+ id:"m5",
+ name:"Kurkure Momos",
+ category:"momos",
+ price:190,
+ emoji:"🥟",
+ desc:"Crunchy kurkure coating"
+},
+
+{
+ id:"m6",
+ name:"Momo Platter",
+ category:"momos",
+ price:380,
+ emoji:"🥟",
+ desc:"16 pieces assorted momo platter"
+},
+
+/* BURGERS */
+
+{
+ id:"b1",
+ name:"Fried Chicken Burger",
+ category:"burgers",
+ price:150,
+ emoji:"🍔",
+ desc:"Crispy chicken burger"
+},
+
+{
+ id:"b2",
+ name:"Smashed Chicken Burger",
+ category:"burgers",
+ price:180,
+ emoji:"🍔",
+ desc:"Juicy smashed chicken patty"
+},
+
+{
+ id:"b3",
+ name:"Grilled Chicken Burger",
+ category:"burgers",
+ price:175,
+ emoji:"🍔",
+ desc:"Grilled chicken with fresh vegetables"
+},
+
+{
+ id:"b4",
+ name:"Chicken Burger",
+ category:"burgers",
+ price:110,
+ emoji:"🍔",
+ desc:"Classic chicken burger"
+},
+
+{
+ id:"b5",
+ name:"Chicken Cheeseburger",
+ category:"burgers",
+ price:170,
+ emoji:"🍔",
+ desc:"Chicken burger with cheese"
+},
+
+{
+ id:"b6",
+ name:"Veggie Burger",
+ category:"burgers",
+ price:99,
+ emoji:"🍔",
+ desc:"Crispy veggie patty"
+},
+
+{
+ id:"b7",
+ name:"Mexican Burger",
+ category:"burgers",
+ price:130,
+ emoji:"🍔",
+ desc:"Mexican-style spicy burger"
+},
+
+{
+ id:"b8",
+ name:"Duo Burger Combo",
+ category:"burgers",
+ price:230,
+ emoji:"🍔",
+ desc:"2 crispy burgers + 2 cokes"
+},
+
+{
+ id:"b9",
+ name:"Ultimate Combo",
+ category:"burgers",
+ price:500,
+ emoji:"🍱",
+ desc:"2 burgers + fries + 2 coke + choco lava"
+},
+
+/* SUBS */
+
+{
+ id:"s1",
+ name:"Bombay Masala",
+ category:"subs",
+ price:170,
+ emoji:"🥪",
+ desc:"Spicy Bombay-style sub"
+},
+
+{
+ id:"s2",
+ name:"Peri Peri Paneer",
+ category:"subs",
+ price:180,
+ emoji:"🥪",
+ desc:"Paneer with peri peri sauce"
+},
+
+{
+ id:"s3",
+ name:"Aloo Tikki",
+ category:"subs",
+ price:160,
+ emoji:"🥪",
+ desc:"Crispy aloo tikki sub"
+},
+
+{
+ id:"s4",
+ name:"Harissa Chicken",
+ category:"subs",
+ price:180,
+ emoji:"🥪",
+ desc:"Chicken with harissa sauce"
+},
+
+{
+ id:"s5",
+ name:"Chipotle Chicken Melt",
+ category:"subs",
+ price:190,
+ emoji:"🥪",
+ desc:"Chicken, cheese and chipotle mayo"
+},
+
+{
+ id:"s6",
+ name:"Italian Sub",
+ category:"subs",
+ price:190,
+ emoji:"🥪",
+ desc:"Chicken, cheese and herbs"
+},
+
+/* WRAPS */
+
+{
+ id:"w1",
+ name:"Veggie Wrap",
+ category:"wraps",
+ price:150,
+ emoji:"🌯",
+ desc:"Spiced vegetables with sauces"
+},
+
+{
+ id:"w2",
+ name:"Paneer Wrap",
+ category:"wraps",
+ price:160,
+ emoji:"🌯",
+ desc:"Crispy paneer wrap"
+},
+
+{
+ id:"w3",
+ name:"Chicken Wrap",
+ category:"wraps",
+ price:160,
+ emoji:"🌯",
+ desc:"Spiced chicken wrap"
+},
+
+/* PIZZA */
+
+{
+ id:"p1",
+ name:"Margherita Pizza",
+ category:"pizza",
+ price:120,
+ emoji:"🍕",
+ desc:"Classic cheese and tomato pizza"
+},
+
+{
+ id:"p2",
+ name:"Peri Peri Paneer Pizza",
+ category:"pizza",
+ price:180,
+ emoji:"🍕",
+ desc:"Paneer, paprika and cheese"
+},
+
+{
+ id:"p3",
+ name:"Golden Corn Pizza",
+ category:"pizza",
+ price:140,
+ emoji:"🍕",
+ desc:"Sweet corn and cheese"
+},
+
+{
+ id:"p4",
+ name:"Veggie Delight Pizza",
+ category:"pizza",
+ price:150,
+ emoji:"🍕",
+ desc:"Fresh vegetables and creamy sauce"
+},
+
+{
+ id:"p5",
+ name:"Chicken Pizza",
+ category:"pizza",
+ price:160,
+ emoji:"🍕",
+ desc:"Chicken and fresh vegetables"
+},
+
+{
+ id:"p6",
+ name:"Sausage Pizza",
+ category:"pizza",
+ price:180,
+ emoji:"🍕",
+ desc:"Sausage, cheese and vegetables"
+},
+
+{
+ id:"p7",
+ name:"Peri Peri Chicken Pizza",
+ category:"pizza",
+ price:180,
+ emoji:"🍕",
+ desc:"Spicy chicken pizza"
+},
+
+/* PASTA */
+
+{
+ id:"pa1",
+ name:"Red Sauce Pasta",
+ category:"pasta",
+ price:250,
+ emoji:"🍝",
+ desc:"Spicy tomato-based pasta"
+},
+
+{
+ id:"pa2",
+ name:"White Sauce Pasta",
+ category:"pasta",
+ price:250,
+ emoji:"🍝",
+ desc:"Creamy Alfredo-style pasta"
+},
+
+{
+ id:"pa3",
+ name:"Chicken Mac N Cheese",
+ category:"pasta",
+ price:299,
+ emoji:"🧀",
+ desc:"Macaroni loaded with chicken"
+},
+
+{
+ id:"pa4",
+ name:"Masala Pasta",
+ category:"pasta",
+ price:200,
+ emoji:"🍝",
+ desc:"Desi-style pasta"
+},
+
+{
+ id:"pa5",
+ name:"Pink Sauce Pasta",
+ category:"pasta",
+ price:250,
+ emoji:"🍝",
+ desc:"Creamy blend of white and red sauce"
+},
+
+{
+ id:"pa6",
+ name:"Creamy Cajun",
+ category:"pasta",
+ price:250,
+ emoji:"🍝",
+ desc:"Smoky creamy Cajun pasta"
+},
+
+/* MAGGI */
+
+{
+ id:"mg1",
+ name:"Masala Maggi",
+ category:"maggi",
+ price:60,
+ emoji:"🍜",
+ desc:"Classic masala Maggi"
+},
+
+{
+ id:"mg2",
+ name:"Chicken Maggi",
+ category:"maggi",
+ price:90,
+ emoji:"🍜",
+ desc:"Chicken Maggi"
+},
+
+{
+ id:"mg3",
+ name:"Veggie Maggi",
+ category:"maggi",
+ price:100,
+ emoji:"🍜",
+ desc:"Loaded vegetable Maggi"
+},
+
+{
+ id:"mg4",
+ name:"Peri Peri Maggi",
+ category:"maggi",
+ price:90,
+ emoji:"🍜",
+ desc:"Spicy peri peri Maggi"
+},
+
+{
+ id:"mg5",
+ name:"Cheese Maggi",
+ category:"maggi",
+ price:100,
+ emoji:"🧀",
+ desc:"Cheesy Maggi"
+},
+
+{
+ id:"mg6",
+ name:"Korean Noodles",
+ category:"maggi",
+ price:100,
+ emoji:"🍜",
+ desc:"Spicy Korean noodles"
+},
+
+/* FRIES */
+
+{
+ id:"f1",
+ name:"Salted Fries",
+ category:"fries",
+ price:150,
+ emoji:"🍟",
+ desc:"Classic salted fries"
+},
+
+{
+ id:"f2",
+ name:"Potato Wedges",
+ category:"fries",
+ price:160,
+ emoji:"🍟",
+ desc:"Crispy potato wedges"
+},
+
+{
+ id:"f3",
+ name:"Peri Peri Fries",
+ category:"fries",
+ price:170,
+ emoji:"🍟",
+ desc:"Spicy peri peri fries"
+},
+
+{
+ id:"f4",
+ name:"Pizza Fries",
+ category:"fries",
+ price:200,
+ emoji:"🍟",
+ desc:"Pizza-style loaded fries"
+},
+
+{
+ id:"f5",
+ name:"Cheesy Fries",
+ category:"fries",
+ price:180,
+ emoji:"🍟",
+ desc:"Fries with cheesy sauce"
+},
+
+{
+ id:"f6",
+ name:"Loaded Fries",
+ category:"fries",
+ price:250,
+ emoji:"🍟",
+ desc:"Loaded fries with toppings"
+},
+
+/* DESSERTS */
+
+{
+ id:"d1",
+ name:"Choco Lava",
+ category:"desserts",
+ price:60,
+ emoji:"🍫",
+ desc:"Warm chocolate centre"
+},
+
+{
+ id:"d2",
+ name:"Hot Brownie",
+ category:"desserts",
+ price:110,
+ emoji:"🍰",
+ desc:"Warm chocolate brownie"
+},
+
+{
+ id:"d3",
+ name:"Brownie & Icecream",
+ category:"desserts",
+ price:140,
+ emoji:"🍨",
+ desc:"Brownie with vanilla ice cream"
+},
+
+{
+ id:"d4",
+ name:"Sizzling Brownie",
+ category:"desserts",
+ price:199,
+ emoji:"🍫",
+ desc:"Brownie served on sizzling plate"
+},
+
+/* DRINKS */
+
+{
+ id:"dr1",
+ name:"Mocktail",
+ category:"drinks",
+ price:99,
+ emoji:"🍹",
+ desc:"Refreshing house mocktail"
+},
+
+{
+ id:"dr2",
+ name:"Milkshake",
+ category:"drinks",
+ price:150,
+ emoji:"🥤",
+ desc:"Vanilla, chocolate, Oreo and more"
+},
+
+{
+ id:"dr3",
+ name:"Thickshake",
+ category:"drinks",
+ price:180,
+ emoji:"🧋",
+ desc:"Nutella, Biscoff and premium flavours"
+},
+
+{
+ id:"dr4",
+ name:"Soft Drink",
+ category:"drinks",
+ price:25,
+ emoji:"🥤",
+ desc:"Chilled soft drink"
+},
+
+{
+ id:"dr5",
+ name:"Cold Drink Can",
+ category:"drinks",
+ price:70,
+ emoji:"🥤",
+ desc:"Chilled can"
+},
+
+{
+ id:"dr6",
+ name:"Red Bull",
+ category:"drinks",
+ price:150,
+ emoji:"⚡",
+ desc:"Energy drink"
+},
+
+{
+ id:"dr7",
+ name:"Hot Chocolate",
+ category:"drinks",
+ price:120,
+ emoji:"☕",
+ desc:"Rich hot chocolate"
+},
+
+{
+ id:"dr8",
+ name:"Black Coffee",
+ category:"drinks",
+ price:60,
+ emoji:"☕",
+ desc:"Fresh black coffee"
+},
+
+{
+ id:"dr9",
+ name:"Coffee",
+ category:"drinks",
+ price:70,
+ emoji:"☕",
+ desc:"Hot coffee"
+}
+
+];
+
+
+/* =====================================================
+   STATIONS
+===================================================== */
+
+let stations = JSON.parse(
+    localStorage.getItem("chumsStations")
+) || [
+
+{
+ id:"PS-01",
+ name:"PS5 Pro Lounge 01",
+ rate:100,
+ icon:"🎮",
+ status:"available",
+ customer:"",
+ startTime:null,
+ items:[]
+},
+
+{
+ id:"PS-02",
+ name:"PS5 Pro Lounge 02",
+ rate:100,
+ icon:"🎮",
+ status:"available",
+ customer:"",
+ startTime:null,
+ items:[]
+},
+
+{
+ id:"VR-01",
+ name:"VR Matrix Suite",
+ rate:250,
+ icon:"🥽",
+ status:"available",
+ customer:"",
+ startTime:null,
+ items:[]
+}
+
+];
+
+
+/* =====================================================
+   STATE
+===================================================== */
+
+let cart =
+JSON.parse(localStorage.getItem("chumsCart")) || [];
+
+let reservations =
+JSON.parse(localStorage.getItem("chumsReservations")) || [];
+
+let activeCategory = "all";
+
+let selectedSlot = "12:00 PM";
+
+let selectedPayment = "Cash";
+
+
+/* =====================================================
+   PAGE NAVIGATION
+===================================================== */
+
+function showPage(page,button){
+
+    document
+        .querySelectorAll(".page")
+        .forEach(p => p.classList.remove("active"));
+
+    const target =
+        document.getElementById("page-"+page);
+
+    if(target){
+        target.classList.add("active");
+    }
+
+    document
+        .querySelectorAll(".nav-links button")
+        .forEach(b => b.classList.remove("active"));
+
+    if(button){
+        button.classList.add("active");
+    }
+
+    if(page==="menu"){
+        renderMenu();
+    }
+
+    if(page==="gaming"){
+        renderStations();
+    }
+
+    if(page==="reserve"){
+        renderReservationForm();
+        renderReservations();
+    }
+
+    if(page==="billing"){
+        renderBilling();
+        updateBill();
+    }
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
+function toggleMobileMenu(){
+
+    const nav =
+        document.querySelector(".nav-links");
+
+    if(nav.style.display==="flex"){
+        nav.style.display="";
+    }else{
+        nav.style.display="flex";
+        nav.style.position="absolute";
+        nav.style.top="78px";
+        nav.style.left="0";
+        nav.style.right="0";
+        nav.style.padding="15px";
+        nav.style.background="#0b0b0b";
+        nav.style.flexDirection="column";
+    }
+}
+
+
+/* =====================================================
+   MENU
+===================================================== */
+
+function setCategory(category,button){
+
+    activeCategory = category;
+
+    document
+        .querySelectorAll("#categories button")
+        .forEach(b=>b.classList.remove("active"));
+
+    button.classList.add("active");
+
+    renderMenu();
+}
+
+
+function renderMenu(){
+
+    const grid =
+        document.getElementById("menuGrid");
+
+    const search =
+        document.getElementById("menuSearch")
+        .value
+        .toLowerCase()
+        .trim();
+
+    let filtered = menu.filter(item=>{
+
+        const matchesCategory =
+            activeCategory==="all" ||
+            item.category===activeCategory;
+
+        const matchesSearch =
+            item.name.toLowerCase().includes(search) ||
+            item.desc.toLowerCase().includes(search);
+
+        return matchesCategory && matchesSearch;
+
+    });
+
+
+    grid.innerHTML = filtered.map(item=>`
+
+        <article class="menu-card">
+
+            <div class="food-image">
+
+                <span class="food-emoji">
+                    ${item.emoji}
+                </span>
+
+                <span class="food-tag">
+                    ${item.category}
+                </span>
+
+            </div>
+
+            <div class="menu-info">
+
+                <h3>
+                    ${item.name}
+                </h3>
+
+                <p class="menu-desc">
+                    ${item.desc}
+                </p>
+
+                <div class="menu-bottom">
+
+                    <span class="price">
+                        ₹${item.price}
+                    </span>
+
+                    <button
+                        class="add-btn"
+                        onclick="addToCart('${item.id}')">
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    `).join("");
+
+}
+
+
+/* =====================================================
+   CART
+===================================================== */
+
+function addToCart(id){
+
+    const item =
+        menu.find(x=>x.id===id);
+
+    if(!item) return;
+
+    const existing =
+        cart.find(x=>x.id===id);
+
+    if(existing){
+
+        existing.qty++;
+
+    }else{
+
+        cart.push({
+            id:item.id,
+            name:item.name,
+            price:item.price,
+            qty:1
+        });
+
+    }
+
+    saveCart();
+
+    showToast(
+        "✓ "+item.name+" added to cart"
+    );
+
+    updateCartCount();
+
+}
+
+
+function changeQty(id,amount){
+
+    const item =
+        cart.find(x=>x.id===id);
+
+    if(!item) return;
+
+    item.qty += amount;
+
+    if(item.qty<=0){
+
+        cart =
+            cart.filter(x=>x.id!==id);
+
+    }
+
+    saveCart();
+
+    renderBilling();
+
+    updateBill();
+
+}
+
+
+function saveCart(){
+
+    localStorage.setItem(
+        "chumsCart",
+        JSON.stringify(cart)
+    );
+
+    updateCartCount();
+
+}
+
+
+function updateCartCount(){
+
+    const count =
+        cart.reduce(
+            (sum,item)=>sum+item.qty,
+            0
+        );
+
+    document.getElementById("cartCount")
+        .innerText=count;
+
+    document.getElementById("cartItemsCount")
+        .innerText=count+" item"+(count===1?"":"s");
+
+}
+
+
+/* =====================================================
+   GAMING STATIONS
+===================================================== */
+
+function saveStations(){
+
+    localStorage.setItem(
+        "chumsStations",
+        JSON.stringify(stations)
+    );
+
+}
+
+
+function getElapsedHours(station){
+
+    if(!station.startTime)
+        return 0;
+
+    const diff =
+        Date.now()-station.startTime;
+
+    return diff/3600000;
+
+}
+
+
+function gamingCharge(station){
+
+    if(!station)
+        return 0;
+
+    if(station.status!=="busy")
+        return 0;
+
+    const hours =
+        Math.max(
+            1/60,
+            getElapsedHours(station)
+        );
+
+    return Math.ceil(hours*station.rate);
+
+}
+
+
+function renderStations(){
+
+    const grid =
+        document.getElementById("stationGrid");
+
+    grid.innerHTML =
+        stations.map(st=>{
+
+            const charge =
+                gamingCharge(st);
+
+            const elapsed =
+                getElapsedHours(st);
+
+            return `
+
+            <div class="station
+                ${st.status==="busy"?"active":""}">
+
+                <div class="station-top">
+
+                    <span class="station-id">
+                        ${st.id}
+                    </span>
+
+                    <span class="status
+                        ${st.status==="busy"
+                            ?"busy"
+                            :"available"}">
+
+                        ${st.status}
+
+                    </span>
+
+                </div>
+
+                <div class="station-icon">
+                    ${st.icon}
+                </div>
+
+                <h3>
+                    ${st.name}
+                </h3>
+
+                <div class="station-meta">
+
+                    ${st.status==="busy"
+                        ?`Playing · ${formatTime(elapsed)}
+                          · ${st.customer}`
+                        :"Ready for your squad"}
+
+                </div>
+
+                <div class="station-footer">
+
+                    <span class="station-price">
+                        ₹${st.rate}/hr
+                    </span>
+
+                    ${
+                    st.status==="busy"
+
+                    ?
+
+                    `<button
+                        class="btn btn-danger"
+                        onclick="endSession('${st.id}')">
+                        End Session
+                    </button>`
+
+                    :
+
+                    `<button
+                        class="btn btn-primary"
+                        onclick="startSession('${st.id}')">
+                        Start Session
+                    </button>`
+
+                    }
+
+                </div>
+
+            </div>
+
+            `;
+
+        }).join("");
+
+    updateDashboard();
+
+}
+
+
+function startSession(id){
+
+    const station =
+        stations.find(x=>x.id===id);
+
+    if(!station) return;
+
+    openSessionModal(station);
+
+}
+
+
+function openSessionModal(station){
+
+    document.getElementById("modalTitle")
+        .innerText="Start "+station.name;
+
+    document.getElementById("modalBody")
+        .innerHTML=`
+
+        <div class="form-group">
+
+            <label>Customer Name</label>
+
+            <input
+                class="input"
+                id="sessionCustomer"
+                placeholder="Player name">
+
+        </div>
+
+        <div style="
+            background:#101012;
+            padding:15px;
+            border-radius:12px;
+            margin-bottom:20px;
+            color:#999;
+        ">
+            Rate:
+            <strong style="color:white">
+                ₹${station.rate}/hour
+            </strong>
+        </div>
+
+        <button
+            class="btn btn-primary"
+            style="width:100%"
+            onclick="confirmSession('${station.id}')">
+
+            Start Gaming →
+
+        </button>
+
+        `;
+
+    document
+        .getElementById("modal")
+        .classList.add("show");
+
+}
+
+
+function confirmSession(id){
+
+    const station =
+        stations.find(x=>x.id===id);
+
+    const customer =
+        document.getElementById("sessionCustomer")
+        .value
+        .trim();
+
+    if(!customer){
+
+        showToast("Please enter customer name");
+
+        return;
+    }
+
+    station.status="busy";
+    station.customer=customer;
+    station.startTime=Date.now();
+
+    saveStations();
+
+    closeModal();
+
+    renderStations();
+
+    updateBill();
+
+    showToast(
+        "🎮 Session started for "+customer
+    );
+
+}
+
+
+function endSession(id){
+
+    const station =
+        stations.find(x=>x.id===id);
+
+    if(!station) return;
+
+    if(
+        !confirm(
+            "End "+station.name+
+            " session for "+station.customer+"?"
+        )
+    ) return;
+
+    station.status="available";
+    station.customer="";
+    station.startTime=null;
+
+    saveStations();
+
+    renderStations();
+
+    updateBill();
+
+    showToast("Session ended");
+
+}
+
+
+function formatTime(hours){
+
+    const h =
+        Math.floor(hours);
+
+    const m =
+        Math.floor((hours-h)*60);
+
+    return h+"h "+m+"m";
+
+}
+
+
+/* =====================================================
+   RESERVATIONS
+===================================================== */
+
+function renderReservationForm(){
+
+    const select =
+        document.getElementById("reserveStation");
+
+    select.innerHTML =
+        stations.map(st=>`
+
+            <option value="${st.id}">
+                ${st.name} — ₹${st.rate}/hr
+            </option>
+
+        `).join("");
+
+    const date =
+        document.getElementById("reserveDate");
+
+    if(!date.value){
+
+        date.value =
+            new Date()
+            .toISOString()
+            .split("T")[0];
+
+    }
+
+    const slots=[
+        "12:00 PM",
+        "01:00 PM",
+        "02:00 PM",
+        "03:00 PM",
+        "04:00 PM",
+        "05:00 PM",
+        "06:00 PM",
+        "07:00 PM",
+        "08:00 PM",
+        "09:00 PM"
+    ];
+
+    document.getElementById("slotGrid")
+        .innerHTML =
+        slots.map(slot=>`
+
+            <div
+                class="slot
+                ${slot===selectedSlot?"selected":""}"
+                onclick="selectSlot('${slot}',this)">
+
+                ${slot}
+
+            </div>
+
+        `).join("");
+
+    calculateReservation();
+
+}
+
+
+function selectSlot(slot,element){
+
+    selectedSlot=slot;
+
+    document
+        .querySelectorAll(".slot")
+        .forEach(s=>s.classList.remove("selected"));
+
+    element.classList.add("selected");
+
+}
+
+
+function calculateReservation(){
+
+    const station =
+        stations.find(
+            x=>x.id===
+            document.getElementById("reserveStation").value
+        );
+
+    const hours =
+        Number(
+            document.getElementById("reserveHours").value
+        ) || 1;
+
+    document.getElementById("reservationTotal")
+        .innerText=
+        "₹"+(station.rate*hours);
+
+}
+
+
+function makeReservation(){
+
+    const name =
+        document.getElementById("customerName")
+        .value.trim();
+
+    const phone =
+        document.getElementById("customerPhone")
+        .value.trim();
+
+    const stationId =
+        document.getElementById("reserveStation")
+        .value;
+
+    const date =
+        document.getElementById("reserveDate")
+        .value;
+
+    const hours =
+        Number(
+            document.getElementById("reserveHours").value
+        );
+
+
+    if(!name){
+
+        showToast("Enter customer name");
+
+        return;
+    }
+
+    if(!/^\d{10}$/.test(phone)){
+
+        showToast(
+            "Enter valid 10 digit phone number"
+        );
+
+        return;
+    }
+
+
+    const reservation={
+
+        id:
+            "RES-"+Math.floor(
+                1000+Math.random()*9000
+            ),
+
+        name,
+        phone,
+        stationId,
+        date,
+        hours,
+        slot:selectedSlot
+
+    };
+
+
+    reservations.push(reservation);
+
+    localStorage.setItem(
+        "chumsReservations",
+        JSON.stringify(reservations)
+    );
+
+
+    document.getElementById("customerName")
+        .value="";
+
+    document.getElementById("customerPhone")
+        .value="";
+
+
+    renderReservations();
+
+    showToast(
+        "✓ Reservation confirmed"
+    );
+
+}
+
+
+function renderReservations(){
+
+    const box =
+        document.getElementById("reservationList");
+
+    if(!box) return;
+
+    if(reservations.length===0){
+
+        box.innerHTML=
+            `<p style="color:#666">
+                No reservations yet.
+             </p>`;
+
+        return;
+
+    }
+
+
+    box.innerHTML =
+        reservations.map(r=>{
+
+            const station =
+                stations.find(
+                    x=>x.id===r.stationId
+                );
+
+            return `
+
+            <div class="reservation">
+
+                <div class="reservation-info">
+
+                    <strong>
+                        ${r.name}
+                    </strong>
+
+                    <span>
+                        ${station?.name || r.stationId}
+                    </span>
+
+                    <span>
+                        ${r.date} · ${r.slot} · ${r.hours}h
+                    </span>
+
+                </div>
+
+                <button
+                    class="btn btn-danger"
+                    onclick="cancelReservation('${r.id}')">
+
+                    Cancel
+
+                </button>
+
+            </div>
+
+            `;
+
+        }).join("");
+
+}
+
+
+function cancelReservation(id){
+
+    reservations =
+        reservations.filter(
+            r=>r.id!==id
+        );
+
+    localStorage.setItem(
+        "chumsReservations",
+        JSON.stringify(reservations)
+    );
+
+    renderReservations();
+
+    showToast("Reservation cancelled");
+
+}
+
+
+/* =====================================================
+   BILLING
+===================================================== */
+
+function renderBilling(){
+
+    const select =
+        document.getElementById("billingStation");
+
+    const busyStations =
+        stations.filter(
+            s=>s.status==="busy"
+        );
+
+    if(busyStations.length===0){
+
+        select.innerHTML=
+            `<option value="">
+                No active sessions
+             </option>`;
+
+    }else{
+
+        select.innerHTML =
+            busyStations.map(st=>`
+
+                <option value="${st.id}">
+                    ${st.name} — ${st.customer}
+                </option>
+
+            `).join("");
+
+    }
+
+
+    const cartBox =
+        document.getElementById("cartItems");
+
+
+    if(cart.length===0){
+
+        cartBox.innerHTML=
+            `<p style="color:#666;text-align:center;padding:20px">
+                Cart is empty.
+             </p>`;
+
+    }else{
+
+        cartBox.innerHTML =
+            cart.map(item=>`
+
+                <div class="cart-item">
+
+                    <div class="cart-item-top">
+
+                        <span class="cart-item-name">
+                            ${item.name}
+                        </span>
+
+                        <span class="cart-item-price">
+                            ₹${item.price*item.qty}
+                        </span>
+
+                    </div>
+
+                    <div class="qty">
+
+                        <button
+                            onclick="changeQty('${item.id}',-1)">
+                            −
+                        </button>
+
+                        <span>
+                            ${item.qty}
+                        </span>
+
+                        <button
+                            onclick="changeQty('${item.id}',1)">
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `).join("");
+
+    }
+
+    updateCartCount();
+
+}
+
+
+function updateBill(){
+
+    const stationId =
+        document.getElementById(
+            "billingStation"
+        ).value;
+
+    const station =
+        stations.find(
+            s=>s.id===stationId
+        );
+
+
+    const foodTotal =
+        cart.reduce(
+            (sum,item)=>
+                sum+(item.price*item.qty),
+            0
+        );
+
+
+    const gameTotal =
+        station
+        ? gamingCharge(station)
+        : 0;
+
+
+    const subtotal =
+        foodTotal+gameTotal;
+
+    const gst =
+        Math.round(subtotal*0.05);
+
+    const total =
+        subtotal+gst;
+
+
+    document.getElementById("cartFoodTotal")
+        .innerText="₹"+foodTotal;
+
+    document.getElementById("cartGameTotal")
+        .innerText="₹"+gameTotal;
+
+
+    document.getElementById("billGaming")
+        .innerText="₹"+gameTotal;
+
+    document.getElementById("billFood")
+        .innerText="₹"+foodTotal;
+
+    document.getElementById("billSubtotal")
+        .innerText="₹"+subtotal;
+
+    document.getElementById("billGST")
+        .innerText="₹"+gst;
+
+    document.getElementById("billTotal")
+        .innerText="₹"+total;
+
+
+    document.getElementById("billStation")
+        .innerText=
+        station
+        ?station.name
+        :"Walk-in";
+
+
+    document.getElementById("billCustomer")
+        .innerText=
+        station?.customer ||
+        "Walk-in";
+
+
+    document.getElementById("billDate")
+        .innerText=
+        new Date().toLocaleString(
+            "en-IN",
+            {
+                dateStyle:"medium",
+                timeStyle:"short"
+            }
+        );
+
+
+    document.getElementById("billItems")
+        .innerHTML =
+
+        cart.length
+
+        ?
+
+        cart.map(item=>`
+
+            <div class="bill-row">
+
+                <span>
+                    ${item.name}
+                    ×${item.qty}
+                </span>
+
+                <strong>
+                    ₹${item.price*item.qty}
+                </strong>
+
+            </div>
+
+        `).join("")
+
+        :
+
+        `<div style="
+            text-align:center;
+            color:#888;
+            font-size:12px;
+        ">
+            No food items
+         </div>`;
+
+}
+
+
+/* =====================================================
+   PAYMENT
+===================================================== */
+
+function selectPayment(method,button){
+
+    selectedPayment=method;
+
+    document
+        .querySelectorAll(".payment")
+        .forEach(
+            b=>b.classList.remove("selected")
+        );
+
+    button.classList.add("selected");
+
+    showToast(
+        "Payment: "+method
+    );
+
+}
+
+
+/* =====================================================
+   PRINT
+===================================================== */
+
+function printReceipt(){
+
+    window.print();
+
+}
+
+
+/* =====================================================
+   CHECKOUT
+===================================================== */
+
+function checkout(){
+
+    const stationId =
+        document.getElementById(
+            "billingStation"
+        ).value;
+
+    const station =
+        stations.find(
+            s=>s.id===stationId
+        );
+
+
+    if(!station){
+
+        if(cart.length===0){
+
+            showToast(
+                "Nothing to checkout"
+            );
+
+            return;
+        }
+
+        cart=[];
+
+        saveCart();
+
+        renderBilling();
+
+        updateBill();
+
+        showToast(
+            "✓ Food order completed"
+        );
+
+        return;
+
+    }
+
+
+    const totalText =
+        document.getElementById(
+            "billTotal"
+        ).innerText;
+
+
+    if(
+        !confirm(
+            "Checkout "+station.customer+
+            " for "+totalText+
+            " using "+selectedPayment+"?"
+        )
+    ){
+
+        return;
+
+    }
+
+
+    station.status="available";
+    station.customer="";
+    station.startTime=null;
+
+    saveStations();
+
+
+    cart=[];
+
+    saveCart();
+
+
+    renderBilling();
+
+    updateBill();
+
+    renderStations();
+
+    updateDashboard();
+
+
+    showToast(
+        "✓ Payment completed successfully"
+    );
+
+}
+
+
+/* =====================================================
+   DASHBOARD
+===================================================== */
+
+function updateDashboard(){
+
+    const active =
+        stations.filter(
+            s=>s.status==="busy"
+        ).length;
+
+    document.getElementById(
+        "homeActive"
+    ).innerText=active;
+
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+function closeModal(){
+
+    document
+        .getElementById("modal")
+        .classList.remove("show");
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+function showToast(message){
+
+    const container =
+        document.getElementById(
+            "toastContainer"
+        );
+
+    const toast =
+        document.createElement("div");
+
+    toast.className="toast";
+
+    toast.innerText=message;
+
+    container.appendChild(toast);
+
+    setTimeout(
+        ()=>toast.remove(),
+        2500
+    );
+
+}
+
+
+/* =====================================================
+   LIVE TIMER
+===================================================== */
+
+setInterval(()=>{
+
+    const currentPage =
+        document.querySelector(
+            "#page-gaming.active"
+        );
+
+    if(currentPage){
+
+        renderStations();
+
+    }
+
+    if(
+        document.querySelector(
+            "#page-billing.active"
+        )
+    ){
+
+        updateBill();
+
+    }
+
+},1000);
+
+
+/* =====================================================
+   INITIALIZE
+===================================================== */
+
+function init(){
+
+    const today =
+        new Date()
+        .toISOString()
+        .split("T")[0];
+
+    document.getElementById(
+        "reserveDate"
+    ).min=today;
+
+    document.getElementById(
+        "reserveDate"
+    ).value=today;
+
+
+    renderMenu();
+
+    renderStations();
+
+    renderReservationForm();
+
+    renderReservations();
+
+    renderBilling();
+
+    updateBill();
+
+    updateCartCount();
+
+    updateDashboard();
+
+}
+
+
+
+// Customer signup/login connected to the Express + MongoDB Atlas API.
+let authMode = "login";
+const authGate = document.getElementById("authGate");
+const authForm = document.getElementById("authForm");
+const authNameWrap = document.getElementById("authNameWrap");
+const authName = document.getElementById("authName");
+const authEmail = document.getElementById("authEmail");
+const authPassword = document.getElementById("authPassword");
+const authHeading = document.getElementById("authHeading");
+const authHint = document.getElementById("authHint");
+const authSubmit = document.getElementById("authSubmit");
+const authSwitch = document.getElementById("authSwitch");
+const authMessage = document.getElementById("authMessage");
+
+function setAuthMode(mode) {
+  authMode = mode;
+  const signup = mode === "signup";
+  authHeading.textContent = signup ? "Create account" : "Login";
+  authHint.textContent = signup ? "Create an account to continue." : "Login to continue to the cafe.";
+  authNameWrap.style.display = signup ? "block" : "none";
+  authName.required = signup;
+  authSubmit.textContent = signup ? "Sign up" : "Login";
+  authSwitch.textContent = signup ? "Already have an account? Login" : "Create an account";
+  authPassword.autocomplete = signup ? "new-password" : "current-password";
+  authMessage.textContent = "";
+}
+
+authSwitch.addEventListener("click", () => setAuthMode(authMode === "login" ? "signup" : "login"));
+authForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  authSubmit.disabled = true;
+  authSubmit.textContent = "Please wait…";
+  authMessage.textContent = "";
+  const payload = { email: authEmail.value.trim(), password: authPassword.value };
+  if (authMode === "signup") payload.name = authName.value.trim();
+  try {
+    const response = await fetch(`/api/auth/${authMode}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+    const result = await response.json();
+    if (!response.ok || !result.success) throw new Error(result.message || "Could not sign in.");
+    localStorage.setItem("chums_auth_token", result.token);
+    localStorage.setItem("chums_auth_user", JSON.stringify(result.user));
+    authGate.style.display = "none";
+    authMessage.textContent = "";
+    showAuthUser(result.user);
+  } catch (error) {
+    authMessage.textContent = error.message || "Could not connect to the server.";
+  } finally {
+    authSubmit.disabled = false;
+    authSubmit.textContent = authMode === "signup" ? "Sign up" : "Login";
+  }
+});
+
+function showAuthUser(user) {
+  const right = document.querySelector(".nav-right");
+  if (!right || document.getElementById("authUserBadge")) return;
+  const badge = document.createElement("span");
+  badge.id = "authUserBadge";
+  badge.textContent = `Hi, ${user.name}`;
+  badge.style.cssText = "color:#aaa;font-size:12px;margin-right:10px";
+  const logout = document.createElement("button");
+  logout.type = "button";
+  logout.textContent = "Logout";
+  logout.style.cssText = "border:1px solid #29292d;background:#111;color:#fff;border-radius:30px;padding:10px 14px;cursor:pointer";
+  logout.addEventListener("click", () => {
+    localStorage.removeItem("chums_auth_token");
+    localStorage.removeItem("chums_auth_user");
+    badge.remove(); logout.remove();
+    authGate.style.display = "grid";
+    setAuthMode("login");
+    authPassword.value = "";
+  });
+  right.prepend(logout);
+  right.prepend(badge);
+}
+
+// Show the app if this browser already has a successful login.
+try {
+  const savedUser = JSON.parse(localStorage.getItem("chums_auth_user") || "null");
+  const savedToken = localStorage.getItem("chums_auth_token");
+  if (savedUser && savedToken) { authGate.style.display = "none"; showAuthUser(savedUser); }
+} catch (_) {}
+
+
+init();
+
+</script>
+
+</body>
+</html>
